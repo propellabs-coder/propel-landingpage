@@ -277,9 +277,11 @@
     </section>
 
     <!-- LIVE DEMO SECTION -->
-    <section id="demo" class="py-12 md:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20 flex items-center justify-center min-h-[60vh] md:min-h-0">
+    <section id="demo" class="py-12 md:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20 flex flex-col items-center justify-center min-h-[60vh] md:min-h-0 overflow-hidden">
         <div class="container mx-auto px-4 md:px-6 text-center flex flex-col items-center">
-                <div class="max-w-3xl mx-auto mb-10">
+            
+            <!-- Section Header -->
+            <div class="max-w-3xl mx-auto mb-8">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
                     <span class="relative flex h-2 w-2">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -287,90 +289,168 @@
                     </span>
                     Live App Preview
                 </div>
-                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Experience the Mobile App</h2>
-                <p class="text-lg text-slate-500">
-                    Interact with the actual application right here. Unlock the full demo experience below.
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Experience Our Mobile Apps</h2>
+                <p class="text-lg text-slate-500 mb-8">
+                    Switch between the Partner and Customer applications below.
                 </p>
-                <div class="mt-4">
-                    <span class="inline-flex items-center px-4 py-2 bg-slate-800 text-white rounded-full font-semibold">Partner Mobile App</span>
+
+                <!-- Slider Toggle / Navigation -->
+                <div class="inline-flex bg-slate-200 p-1 rounded-full relative z-10">
+                    <button onclick="switchTab(0)" id="btn-partner" class="px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-slate-900 ring-1 ring-black/5">
+                        Partner App
+                    </button>
+                    <button onclick="switchTab(1)" id="btn-customer" class="px-6 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                        Customer App
+                    </button>
                 </div>
             </div>
 
-            <!-- iPhone Frame Container -->
-            <div class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2rem] h-[700px] w-[340px] sm:h-[780px] sm:w-[380px] shadow-2xl flex flex-col overflow-hidden ring-1 ring-slate-900/5 max-w-[96vw]">
+            <!-- Slider Container (Viewport) -->
+            <div class="w-full max-w-[500px] mx-auto overflow-hidden pb-10 px-4">
                 
-                <!-- Dynamic Island / Notch -->
-                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center">
-                    <!-- Camera lens dot -->
-                    <div class="w-16 h-4 bg-gray-800/50 rounded-full"></div>
-                </div>
-
-                <!-- Silent Switch / Volume Buttons (Decorative Side Lines) -->
-                <div class="h-10 w-[3px] bg-gray-800 absolute -left-[17px] top-[100px] rounded-l-lg"></div>
-                <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[150px] rounded-l-lg"></div>
-                <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[225px] rounded-l-lg"></div>
-                <div class="h-20 w-[3px] bg-gray-800 absolute -right-[17px] top-[170px] rounded-r-lg"></div>
-
-                <!-- Screen Content -->
-                <div class="h-full w-full bg-white rounded-[1.8rem] overflow-hidden relative bg-slate-50">
+                <!-- Slider Track (Holds both phones) -->
+                <div id="slider-track" class="flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full">
                     
-                    <!-- THE GATE / FORM OVERLAY -->
-                    <div id="demo-gate" class="absolute inset-0 z-40 flex items-end justify-center bg-slate-900/20 backdrop-blur-md transition-all duration-700 ease-in-out">
-                        
-                        <!-- Form Card Slide-up -->
-                        <div class="bg-white w-full h-full pt-12 px-4 pb-6 md:pt-16 md:px-6 flex flex-col justify-center relative overflow-y-auto no-scrollbar">
-                            <!-- Header -->
-                            <div class="text-center mb-6">
-                <div class="flex justify-center mb-4">
-                    <a href="#" class="flex items-center gap-2 group z-50 relative">
-                        <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-                            <img src="/Propel Labs Logo.png" alt="">
-                        </div>
-                    </a>
-                </div>
-                                <h3 class="text-xl font-bold text-slate-900">Unlock App Demo</h3>
-                                <p class="text-slate-500 mt-2 text-xs">Enter your details to access the partner app.</p>
+                    <!-- SLIDE 1: Partner App -->
+                    <div class="w-full flex-shrink-0 flex justify-center px-2">
+                        <!-- iPhone Frame -->
+                        <div class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2rem] h-[700px] w-[340px] sm:h-[780px] sm:w-[380px] shadow-2xl flex flex-col overflow-hidden ring-1 ring-slate-900/5">
+                            
+                            <!-- Dynamic Island -->
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-4 bg-gray-800/50 rounded-full"></div>
                             </div>
+                            
+                            <!-- Side Buttons -->
+                            <div class="h-10 w-[3px] bg-gray-800 absolute -left-[17px] top-[100px] rounded-l-lg"></div>
+                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[150px] rounded-l-lg"></div>
+                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[225px] rounded-l-lg"></div>
+                            <div class="h-20 w-[3px] bg-gray-800 absolute -right-[17px] top-[170px] rounded-r-lg"></div>
 
-                            <form id="demo-form" class="space-y-3">
-                                <div>
-                                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Full Name *">
-                                </div>
-                                <div>
-                                    <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Work Email *">
-                                </div>
-                                <div>
-                                    <input type="tel" id="mobile" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Mobile Number *">
-                                </div>
-                                <div>
-                                    <input type="text" id="company" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Company Name *">
-                                </div>
+                            <!-- Screen Content -->
+                            <div class="h-full w-full bg-white rounded-[1.8rem] overflow-hidden relative bg-slate-50">
                                 
-                                <button type="submit" class="w-full bg-brand-600 text-white font-bold py-3.5 rounded-xl hover:bg-brand-700 transition-all shadow-lg hover:shadow-brand-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
-                                    Start Demo
-                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </button>
-                                <p class="text-[10px] text-center text-slate-400 mt-2">
-                                    By proceeding, you agree to our Terms.
-                                </p>
-                            </form>
+                                <!-- GATE OVERLAY (PARTNER) -->
+                                <div id="gate-partner" class="absolute inset-0 z-40 flex items-end justify-center bg-slate-900/20 backdrop-blur-md transition-all duration-700 ease-in-out">
+                                    <div class="bg-white w-full h-full pt-12 px-4 pb-6 md:pt-16 md:px-6 flex flex-col justify-center relative overflow-y-auto no-scrollbar">
+                                        <div class="text-center mb-6">
+                                            <div class="flex justify-center mb-4">
+                                                <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                                    <img src="/Propel Labs Logo.png" alt="">
+                                                </div>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-slate-900">Unlock Partner App</h3>
+                                            <p class="text-slate-500 mt-2 text-xs">Enter your details to access the Partner Dashboard.</p>
+                                        </div>
+                                        <form id="form-partner" class="space-y-3">
+                                            <div>
+                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Full Name *">
+                                            </div>
+                                            <div>
+                                                <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Work Email *">
+                                            </div>
+                                            <div>
+                                                <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Mobile Number *">
+                                            </div>
+                                            <div>
+                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Company Name *">
+                                            </div>
+                                            <button type="submit" class="w-full bg-brand-600 text-white font-bold py-3.5 rounded-xl hover:bg-brand-700 transition-all shadow-lg shadow-brand-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
+                                                Launch Partner App <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                            </button>
+                                            <p class="text-[10px] text-center text-slate-400 mt-2">
+                                                By proceeding, you agree to our Terms.
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Placeholder BG -->
+                                <div id="placeholder-partner" class="absolute inset-0 bg-slate-100 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center z-0"></div>
+                                <div class="h-8 w-full bg-white absolute top-0 left-0 z-30"></div>
+
+                                <!-- IFRAME (PARTNER) -->
+                                <iframe 
+                                    id="frame-partner"
+                                    data-src="https://propelapps-vtfb.vercel.app/" 
+                                    title="Partner App Demo"
+                                    class="w-full h-full border-0 absolute inset-0 z-20 opacity-0 pointer-events-none transition-opacity duration-1000 pt-8"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Placeholder BG (Visible behind blur) -->
-                    <div id="demo-placeholder" class="absolute inset-0 bg-slate-100 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center z-0"></div>
+                    <!-- SLIDE 2: Customer App -->
+                    <div class="w-full flex-shrink-0 flex justify-center px-2">
+                        <!-- iPhone Frame -->
+                        <div class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2rem] h-[700px] w-[340px] sm:h-[780px] sm:w-[380px] shadow-2xl flex flex-col overflow-hidden ring-1 ring-slate-900/5">
+                            
+                            <!-- Dynamic Island -->
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-4 bg-gray-800/50 rounded-full"></div>
+                            </div>
+                            
+                            <!-- Side Buttons -->
+                            <div class="h-10 w-[3px] bg-gray-800 absolute -left-[17px] top-[100px] rounded-l-lg"></div>
+                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[150px] rounded-l-lg"></div>
+                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[225px] rounded-l-lg"></div>
+                            <div class="h-20 w-[3px] bg-gray-800 absolute -right-[17px] top-[170px] rounded-r-lg"></div>
 
-                    <!-- Status Bar Shim (To prevent content from hiding behind notch) -->
-                    <div class="h-8 w-full bg-white absolute top-0 left-0 z-30"></div>
+                            <!-- Screen Content -->
+                            <div class="h-full w-full bg-white rounded-[1.8rem] overflow-hidden relative bg-slate-50">
+                                
+                                <!-- GATE OVERLAY (CUSTOMER) -->
+                                <div id="gate-customer" class="absolute inset-0 z-40 flex items-end justify-center bg-slate-900/20 backdrop-blur-md transition-all duration-700 ease-in-out">
+                                    <div class="bg-white w-full h-full pt-12 px-4 pb-6 md:pt-16 md:px-6 flex flex-col justify-center relative overflow-y-auto no-scrollbar">
+                                        <div class="text-center mb-6">
+                                            <div class="flex justify-center mb-4">
+                                                <div class="w-11 h-11 bg-rose-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                                    <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                                                </div>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-slate-900">Unlock Customer App</h3>
+                                            <p class="text-slate-500 mt-2 text-xs">Enter your details to experience the Buyer Journey.</p>
+                                        </div>
+                                        <form id="form-customer" class="space-y-3">
+                                            <div>
+                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Full Name *">
+                                            </div>
+                                            <div>
+                                                <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Personal Email *">
+                                            </div>
+                                            <div>
+                                                <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Mobile Number *">
+                                            </div>
+                                            <div>
+                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Company Name *">
+                                            </div>
+                                            <button type="submit" class="w-full bg-rose-500 text-white font-bold py-3.5 rounded-xl hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
+                                                Launch Customer App <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                            </button>
+                                            <p class="text-[10px] text-center text-slate-400 mt-2">
+                                                By proceeding, you agree to our Terms.
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
 
-                    <!-- Actual Iframe -->
-                    <iframe 
-                        id="demo-frame"
-                        data-src="https://propelapps-vtfb.vercel.app/" 
-                        title="Propel Apps Live Demo"
-                        class="w-full h-full border-0 absolute inset-0 z-20 opacity-0 pointer-events-none transition-opacity duration-1000 pt-8"
-                        allowfullscreen>
-                    </iframe>
+                                <!-- Placeholder BG -->
+                                <div id="placeholder-customer" class="absolute inset-0 bg-slate-100 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center z-0"></div>
+                                <div class="h-8 w-full bg-white absolute top-0 left-0 z-30"></div>
+
+                                <!-- IFRAME (CUSTOMER) -->
+                                <iframe 
+                                    id="frame-customer"
+                                    data-src="https://propel-customerapp.vercel.app/" 
+                                    title="Customer App Demo"
+                                    class="w-full h-full border-0 absolute inset-0 z-20 opacity-0 pointer-events-none transition-opacity duration-1000 pt-8"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             
@@ -550,49 +630,74 @@
             }
         });
 
-        // Close Mobile Menu on Link Click
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('translate-x-full');
             });
         });
 
-        // Demo Gate Logic
-        const demoForm = document.getElementById('demo-form');
-        const demoGate = document.getElementById('demo-gate');
-        const demoFrame = document.getElementById('demo-frame');
-        const demoPlaceholder = document.getElementById('demo-placeholder');
-
-        demoForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        // --- DEMO SLIDER LOGIC ---
+        function switchTab(index) {
+            const track = document.getElementById('slider-track');
+            const btnPartner = document.getElementById('btn-partner');
+            const btnCustomer = document.getElementById('btn-customer');
             
-            // Get values if needed for backend
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const mobile = document.getElementById('mobile').value;
-            const company = document.getElementById('company').value;
+            // Move Track
+            track.style.transform = `translateX(-${index * 100}%)`;
 
-            // Simulate loading or processing
-            const submitBtn = demoForm.querySelector('button');
-            const originalBtnContent = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Unlocking...';
-            submitBtn.disabled = true;
+            // Update Buttons Style
+            if (index === 0) {
+                // Partner Active
+                btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-slate-900 ring-1 ring-black/5";
+                btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
+            } else {
+                // Customer Active
+                btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
+                btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-slate-900 ring-1 ring-black/5";
+            }
+        }
 
-            setTimeout(() => {
-                // Hide Gate
-                demoGate.classList.add('demo-hidden');
+        // --- GATE UNLOCK LOGIC (Generic) ---
+        function setupGate(formId, gateId, frameId, placeholderId) {
+            const form = document.getElementById(formId);
+            const gate = document.getElementById(gateId);
+            const frame = document.getElementById(frameId);
+            const placeholder = document.getElementById(placeholderId);
+
+            if(!form) return;
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
                 
-                // Show Iframe
-                demoFrame.src = demoFrame.getAttribute('data-src');
-                demoFrame.classList.remove('opacity-0', 'pointer-events-none');
+                const submitBtn = form.querySelector('button');
+                const originalText = submitBtn.innerHTML;
                 
-                // Hide placeholder after transition
+                submitBtn.innerHTML = 'Unlocking...';
+                submitBtn.disabled = true;
+
                 setTimeout(() => {
-                    demoPlaceholder.style.display = 'none';
-                }, 500);
+                    // Hide Gate
+                    gate.classList.add('demo-hidden');
+                    
+                    // Load Iframe
+                    if(frame.getAttribute('data-src')) {
+                        frame.src = frame.getAttribute('data-src');
+                    }
+                    frame.classList.remove('opacity-0', 'pointer-events-none');
+                    
+                    // Hide placeholder
+                    setTimeout(() => {
+                        if(placeholder) placeholder.style.display = 'none';
+                    }, 500);
 
-            }, 800);
-        });
+                }, 800);
+            });
+        }
+
+        // Initialize both gates
+        setupGate('form-partner', 'gate-partner', 'frame-partner', 'placeholder-partner');
+        setupGate('form-customer', 'gate-customer', 'frame-customer', 'placeholder-customer');
+
     </script>
 </body>
 </html>
