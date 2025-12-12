@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propel Labs | Real Estate Partner Platform</title>
-    <meta name="description" content="Personalized solutions for streamlining real estate relationships. Manage leads, incentives, and marketing assets in one place.">
-    
+    <meta name="description"
+        content="Personalized solutions for streamlining real estate relationships. Manage leads, incentives, and marketing assets in one place.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -24,12 +27,17 @@
                     },
                     colors: {
                         brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e3a8a',
+                            50: '#F0F5FF', // Lighter
+                            100: '#E0EAFF',
+                            200: '#C7D9FE',
+                            300: '#A4C2FD',
+                            400: '#7B9FF9',
+                            500: '#3B82F6', // Logo Base
+                            600: '#2563EB', // Vibrant
+                            700: '#1D4ED8', // Deep
+                            800: '#1E40AF',
+                            900: '#1E3A8A', // Darkest
+                            950: '#172554',
                         },
                         slate: {
                             850: '#151e2e',
@@ -37,20 +45,29 @@
                         }
                     },
                     boxShadow: {
-                        'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
-                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'glow': '0 0 40px -10px rgba(59, 130, 246, 0.5)',
+                        'glow-sm': '0 0 20px -5px rgba(59, 130, 246, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.05)',
+                    },
+                    backgroundImage: {
+                        'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%)',
+                        'hero-glow': 'conic-gradient(from 90deg at 50% 50%, #eff6ff 0%, #dbeafe 50%, #eff6ff 100%)',
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-up-delayed': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -63,46 +80,81 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Custom Utilities */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        /* Modernized Styles */
+        body {
+            background-color: #F8FAFC;
+            overflow-x: hidden;
         }
-        
-        .hero-gradient {
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 50%),
-                        radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563EB 50%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientMove 5s ease infinite;
         }
 
-        /* Perspective for 3D card effect */
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-        
-        .rotate-y-12 {
-            transform: rotateY(-5deg) rotateX(2deg);
-            transition: transform 0.5s ease;
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        .rotate-y-12:hover {
-            transform: rotateY(0deg) rotateX(0deg);
+        /* 3D Perspective */
+        .perspective-2000 {
+            perspective: 2000px;
+        }
+
+        .rotate-card {
+            transform: rotateY(-10deg) rotateX(5deg);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+        }
+
+        .rotate-card:hover {
+            transform: rotateY(-2deg) rotateX(2deg);
+        }
+
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
         }
 
         /* Scrollbar hiding */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
+        }
+
+        /* Smooth Scroll behavior */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Demo Gate Animation */
@@ -111,163 +163,299 @@
             pointer-events: none;
             transform: scale(0.95);
         }
+
+        /* Background Mesh Gradient */
+        .mesh-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background:
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(29, 78, 216, 0.05) 0px, transparent 50%);
+            filter: blur(60px);
+        }
     </style>
 </head>
-<body class="font-sans text-slate-600 bg-white antialiased selection:bg-brand-500 selection:text-white">
+
+<body class="font-sans text-slate-600 antialiased selection:bg-brand-500 selection:text-white relative">
+    <div class="mesh-bg"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-transparent" id="navbar">
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav border-b border-white/20" id="navbar">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-2 group z-50 relative">
-                    <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-                        <img src="/Propel Labs Logo.png" alt="">
+                <a href="#" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform duration-300">
+                        <img src="/Propel Labs Logo.png" alt="" class="w-6 h-6 object-contain brightness-0 invert">
                     </div>
-                    <span class="text-xl font-bold text-slate-900 tracking-tight">Propel<span class="text-brand-600">Labs</span></span>
+                    <span class="text-xl font-bold text-slate-900 tracking-tight">Propel<span
+                            class="text-brand-600">Labs</span></span>
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#demo" class="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">Live Demo</a>
-                    <a href="#features" class="text-sm font-medium hover:text-brand-600 transition-colors">Features</a>
-                    <a href="#solutions" class="text-sm font-medium hover:text-brand-600 transition-colors">Solutions</a>
-                    <!-- <a href="#marketing" class="text-sm font-medium hover:text-brand-600 transition-colors">Marketing Kit</a> -->
-                    <a href="#footer" class="text-sm font-medium hover:text-brand-600 transition-colors">Contact</a>
+                <div
+                    class="hidden md:flex items-center gap-1 bg-white/50 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/40 shadow-sm">
+                    <a href="#demo"
+                        class="px-5 py-2 text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-white rounded-full transition-all">Live
+                        Demo</a>
+                    <a href="#features"
+                        class="px-5 py-2 text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-white rounded-full transition-all">Features</a>
+                    <a href="#solutions"
+                        class="px-5 py-2 text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-white rounded-full transition-all">Solutions</a>
+                    <a href="#footer"
+                        class="px-5 py-2 text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-white rounded-full transition-all">Contact</a>
                 </div>
 
                 <!-- CTA Buttons -->
                 <div class="hidden md:flex items-center gap-4">
-                    <a href="https://propelapps-vtfb.vercel.app/" target="_blank" class="text-sm font-semibold text-slate-900 hover:text-brand-600">Login</a>
-                    <a href="#demo" class="bg-brand-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <a href="https://propelapps-vtfb.vercel.app/" target="_blank"
+                        class="text-sm font-bold text-slate-700 hover:text-brand-600 transition-colors">Login</a>
+                    <a href="#demo"
+                        class="bg-brand-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-brand-700 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 hover:-translate-y-0.5 active:translate-y-0">
                         Enroll Now
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden text-slate-900 z-50 relative p-2" id="mobile-menu-btn" aria-label="Toggle Menu">
-                    <i data-lucide="menu"></i>
+                <button class="md:hidden text-slate-900 p-2 hover:bg-slate-100 rounded-lg transition-colors"
+                    id="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6" id="mobile-menu">
+        <div class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6"
+            id="mobile-menu">
             <div class="flex flex-col gap-6 text-center">
-                <a href="#demo" class="mobile-link text-lg font-bold text-brand-600 py-2 border-b border-slate-100">Live Demo</a>
-                <a href="#features" class="mobile-link text-lg font-medium text-slate-800 py-2 border-b border-slate-100">Features</a>
-                <a href="#solutions" class="mobile-link text-lg font-medium text-slate-800 py-2 border-b border-slate-100">Solutions</a>
-                <!-- <a href="#marketing" class="mobile-link text-lg font-medium text-slate-800 py-2 border-b border-slate-100">Marketing Kit</a> -->
-                <div class="flex flex-col gap-4 mt-4">
-                    <a href="https://propelapps-vtfb.vercel.app/" target="_blank" class="w-full text-center py-3.5 rounded-xl border-2 border-slate-200 font-bold text-slate-700 hover:bg-slate-50">Login</a>
-                    <a href="#demo" class="mobile-link w-full text-center py-3.5 rounded-xl bg-brand-600 text-white font-bold shadow-lg hover:bg-brand-700">Enroll Now</a>
+                <a href="#demo" class="mobile-link text-lg font-bold text-brand-600 py-2 border-b border-slate-100">Live
+                    Demo</a>
+                <a href="#features"
+                    class="mobile-link text-lg font-medium text-slate-800 py-2 border-b border-slate-100">Features</a>
+                <a href="#solutions"
+                    class="mobile-link text-lg font-medium text-slate-800 py-2 border-b border-slate-100">Solutions</a>
+                <div class="flex flex-col gap-4 mt-8">
+                    <a href="https://propelapps-vtfb.vercel.app/" target="_blank"
+                        class="w-full text-center py-4 rounded-xl border-2 border-slate-200 font-bold text-slate-700 hover:bg-slate-50">Login</a>
+                    <a href="#demo"
+                        class="mobile-link w-full text-center py-4 rounded-xl bg-brand-600 text-white font-bold shadow-lg shadow-brand-500/30 hover:bg-brand-700">Enroll
+                        Now</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-20 pb-12 md:pt-32 md:pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-gradient">
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <!-- Floating Abstract Shapes -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 rounded-full blur-[100px] -z-10 animate-float">
+        </div>
+        <div
+            class="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-[100px] -z-10 animate-float-delayed">
+        </div>
+
         <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-8 md:gap-16">
-                
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
                 <!-- Hero Content -->
-                <div class="lg:w-1/2 animate-slide-up text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-xs font-bold uppercase tracking-wider mb-6">
+                <div class="lg:w-1/2 text-center lg:text-left z-10 animate-slide-up">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 border border-white/50 backdrop-blur-sm shadow-sm text-brand-700 text-xs font-bold uppercase tracking-wider mb-8">
                         <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
                         The Future of Real Estate Sales
                     </div>
-                    
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6">
-                        Personalized Solutions for <br>
-                        <span class="text-gradient">Streamlining Relationships</span>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 leading-[1.1] mb-6 tracking-tight">
+                        Generic Solutions <br>
+                        <span class="text-slate-400 font-medium text-3xl lg:text-5xl block my-2">are a thing of the
+                            past.</span>
+                        <span class="text-gradient block mt-2">Go Personalized.</span>
                     </h1>
-                    
-                    <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                        Empower your real estate journey. Manage leads, track incentives, and access premium marketing assets—all in one unified partner dashboard.
+
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                        Manage leads, track incentives, and access premium marketing assets in one unified mobile-first
+                        ecosystem.
                     </p>
-                    
+
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#demo" class="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-                            <i data-lucide="play-circle" class="w-5 h-5"></i>
-                            Watch Demo
+                        <a href="#demo"
+                            class="bg-brand-600 text-white px-8 py-4 rounded-full font-bold hover:bg-brand-700 transition-all shadow-xl shadow-brand-500/25 flex items-center justify-center gap-2 hover:-translate-y-1">
+                            Start Demo
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#features"
+                            class="glass text-slate-700 px-8 py-4 rounded-full font-bold hover:bg-white/80 transition-all flex items-center justify-center gap-2">
+                            Explore Features
                         </a>
                     </div>
 
-                    <div class="mt-12 flex items-center justify-center lg:justify-start gap-8 text-sm font-medium text-slate-500">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i>
-                            Real-time Analytics
+                    <div
+                        class="mt-16 pt-8 border-t border-slate-200/50 flex flex-wrap items-center justify-center lg:justify-start gap-8 opacity-80">
+                        <div class="text-center lg:text-left">
+                            <h4 class="text-2xl font-bold text-slate-900">12K+</h4>
+                            <p class="text-xs text-slate-500 font-semibold uppercase">Active Users</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i>
-                            Instant Payouts
+                        <div class="h-8 w-px bg-slate-200 hidden lg:block"></div>
+                        <div class="text-center lg:text-left">
+                            <h4 class="text-2xl font-bold text-slate-900">₹450 Cr</h4>
+                            <p class="text-xs text-slate-500 font-semibold uppercase">Sales Processed</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hero Visual (Dashboard Mockup) -->
-                <div class="lg:w-1/2 w-full perspective-1000 relative z-10 hidden md:block">
-                    <!-- Decorative Background Blobs -->
-                    <div class="absolute -top-10 -right-10 w-72 h-72 bg-purple-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-                    <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-blue-200 rounded-full blur-3xl opacity-30 -z-10"></div>
+                <!-- Hero Visual (3D Phone) -->
+                <div class="lg:w-1/2 w-full perspective-2000 relative z-10 flex justify-center mt-12 lg:mt-0">
+                    <!-- Main 3D Card Container -->
+                    <div class="relative w-[320px] sm:w-[360px] h-[680px] rotate-card transition-all duration-700">
 
-                    <!-- Main Dashboard Card -->
-                    <div class="bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 rotate-y-12 w-full max-w-lg mx-auto transform transition-all duration-500 hover:scale-[1.02]">
-                        <!-- Header Mockup -->
-                        <div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                                    <i data-lucide="user" class="w-5 h-5 text-slate-400"></i>
+                        <!-- Floating Glass Cards (Orbiting) -->
+                        <div
+                            class="absolute top-20 -left-20 z-20 glass p-4 rounded-2xl shadow-lg animate-float w-48 hidden md:block">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                    <i data-lucide="trending-up" class="w-4 h-4 text-green-600"></i>
                                 </div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-sm">Welcome, Alexa</h4>
-                                    <p class="text-xs text-slate-400">Partner Dashboard</p>
-                                </div>
+                                <span class="text-xs font-bold text-slate-600">Growth</span>
                             </div>
-                            <span class="text-green-600 bg-green-50 px-2 py-1 rounded text-xs font-bold">+12.5% Growth</span>
+                            <h4 class="text-xl font-bold text-slate-900">+127%</h4>
+                            <p class="text-[10px] text-slate-400">Leads this month</p>
                         </div>
 
-                        <!-- Stats Grid -->
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="bg-blue-50 p-4 rounded-xl">
-                                <p class="text-xs text-blue-600 font-bold uppercase mb-1">Total Leads</p>
-                                <h3 class="text-2xl font-bold text-slate-900">1,489</h3>
-                                <div class="w-full bg-blue-200 h-1.5 rounded-full mt-3 overflow-hidden">
-                                    <div class="bg-blue-600 h-full w-[70%] rounded-full"></div>
+                        <div
+                            class="absolute bottom-32 -right-16 z-20 glass p-4 rounded-2xl shadow-lg animate-float-delayed w-44 hidden md:block">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-blue-600"></i>
                                 </div>
+                                <span class="text-xs font-bold text-slate-600">Task Complete</span>
                             </div>
-                            <div class="bg-indigo-50 p-4 rounded-xl">
-                                <p class="text-xs text-indigo-600 font-bold uppercase mb-1">Incentive Due</p>
-                                <h3 class="text-2xl font-bold text-slate-900">₹20 Cr</h3>
-                                <div class="w-full bg-indigo-200 h-1.5 rounded-full mt-3 overflow-hidden">
-                                    <div class="bg-indigo-600 h-full w-[45%] rounded-full"></div>
-                                </div>
-                            </div>
+                            <p class="text-sm font-semibold text-slate-800">Site Visit Done</p>
                         </div>
 
-                        <!-- Recent Activity List -->
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-xs text-slate-600">TR</div>
-                                    <div>
-                                        <p class="text-sm font-bold text-slate-800">The Regent</p>
-                                        <p class="text-xs text-slate-500">Unit 1307 • Scheduled</p>
-                                    </div>
-                                </div>
-                                <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full">PENDING</span>
+
+                        <!-- Phone Frame -->
+                        <div
+                            class="relative w-full h-full bg-slate-900 rounded-[3rem] shadow-2xl overflow-hidden border-[8px] border-slate-900 ring-1 ring-white/20">
+                            <!-- Notch/Island -->
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-b-2xl z-30">
                             </div>
-                            
-                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer opacity-60">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-xs text-slate-600">JP</div>
-                                    <div>
-                                        <p class="text-sm font-bold text-slate-800">Janapriya</p>
-                                        <p class="text-xs text-slate-500">Service Request</p>
+
+                            <!-- Screen -->
+                            <div class="w-full h-full bg-white overflow-hidden relative">
+                                <!-- App Header -->
+                                <div class="bg-brand-600 pt-12 pb-24 px-6 rounded-b-[2.5rem] relative overflow-hidden">
+                                    <div
+                                        class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl">
+                                    </div>
+                                    <div class="flex justify-between items-center text-white mb-6 relative z-10">
+                                        <div>
+                                            <p class="text-brand-100 text-xs">Welcome back,</p>
+                                            <h3 class="font-bold text-lg">Priya Sharma</h3>
+                                        </div>
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                            <i data-lucide="bell" class="w-5 h-5"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full">OPEN</span>
+
+                                <!-- Floated Stats Card -->
+                                <div class="mx-6 -mt-16 bg-white rounded-2xl p-5 shadow-card relative z-10">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="text-center border-r border-slate-100">
+                                            <p class="text-xs text-slate-400 font-semibold mb-1">Total Leads</p>
+                                            <h3 class="text-2xl font-bold text-slate-900">428</h3>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="text-xs text-slate-400 font-semibold mb-1">Earnings</p>
+                                            <h3 class="text-2xl font-bold text-brand-600">₹8.5L</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quick Actions -->
+                                <div class="px-6 mt-8">
+                                    <h4 class="text-sm font-bold text-slate-900 mb-4">Quick Actions</h4>
+                                    <div class="grid grid-cols-4 gap-4">
+                                        <div class="flex flex-col items-center gap-2">
+                                            <div
+                                                class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shadow-sm">
+                                                <i data-lucide="plus" class="w-6 h-6"></i>
+                                            </div>
+                                            <span class="text-[10px] font-medium text-slate-600">Add Lead</span>
+                                        </div>
+                                        <div class="flex flex-col items-center gap-2">
+                                            <div
+                                                class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shadow-sm">
+                                                <i data-lucide="calendar" class="w-6 h-6"></i>
+                                            </div>
+                                            <span class="text-[10px] font-medium text-slate-600">Visit</span>
+                                        </div>
+                                        <div class="flex flex-col items-center gap-2">
+                                            <div
+                                                class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shadow-sm">
+                                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                                            </div>
+                                            <span class="text-[10px] font-medium text-slate-600">Quote</span>
+                                        </div>
+                                        <div class="flex flex-col items-center gap-2">
+                                            <div
+                                                class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center shadow-sm">
+                                                <i data-lucide="phone" class="w-6 h-6"></i>
+                                            </div>
+                                            <span class="text-[10px] font-medium text-slate-600">Call</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Recent Items -->
+                                <div class="px-6 mt-8">
+                                    <h4 class="text-sm font-bold text-slate-900 mb-4">Recent Leads</h4>
+                                    <div class="space-y-3">
+                                        <div
+                                            class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                            <div
+                                                class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-sm font-bold text-slate-700 shadow-sm">
+                                                RJ</div>
+                                            <div class="flex-1">
+                                                <h5 class="text-sm font-bold text-slate-900">Rahul Jain</h5>
+                                                <p class="text-xs text-slate-500">Looking for 3BHK</p>
+                                            </div>
+                                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                            <div
+                                                class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-sm font-bold text-slate-700 shadow-sm">
+                                                SK</div>
+                                            <div class="flex-1">
+                                                <h5 class="text-sm font-bold text-slate-900">Sneha Kumar</h5>
+                                                <p class="text-xs text-slate-500">Site Visit Tomorrow</p>
+                                            </div>
+                                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Navigation overlay for visual realism -->
+                                <div
+                                    class="absolute bottom-0 w-full h-16 bg-white border-t border-slate-100 flex justify-around items-center px-4">
+                                    <i data-lucide="home" class="w-6 h-6 text-brand-600 filled fill-current"></i>
+                                    <i data-lucide="compass" class="w-6 h-6 text-slate-300"></i>
+                                    <div
+                                        class="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center -mt-6 shadow-lg shadow-brand-500/40 text-white">
+                                        <i data-lucide="scan" class="w-6 h-6"></i>
+                                    </div>
+                                    <i data-lucide="message-square" class="w-6 h-6 text-slate-300"></i>
+                                    <i data-lucide="user" class="w-6 h-6 text-slate-300"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -277,15 +465,18 @@
     </section>
 
     <!-- LIVE DEMO SECTION -->
-    <section id="demo" class="py-12 md:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20 flex flex-col items-center justify-center min-h-[60vh] md:min-h-0 overflow-hidden">
+    <section id="demo"
+        class="py-12 md:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20 flex flex-col items-center justify-center min-h-[60vh] md:min-h-0 overflow-hidden">
         <div class="container mx-auto px-4 md:px-6 text-center flex flex-col items-center">
-            
+
             <!-- Section Header -->
             <div class="max-w-3xl mx-auto mb-8">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
                     <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                     </span>
                     Live App Preview
                 </div>
@@ -296,10 +487,12 @@
 
                 <!-- Slider Toggle / Navigation -->
                 <div class="inline-flex bg-slate-200 p-1 rounded-full relative z-10">
-                    <button onclick="switchTab(0)" id="btn-partner" class="px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-slate-900 ring-1 ring-black/5">
+                    <button onclick="switchTab(0)" id="btn-partner"
+                        class="px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-slate-900 ring-1 ring-black/5">
                         Partner App
                     </button>
-                    <button onclick="switchTab(1)" id="btn-customer" class="px-6 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                    <button onclick="switchTab(1)" id="btn-customer"
+                        class="px-6 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
                         Customer App
                     </button>
                 </div>
@@ -307,20 +500,23 @@
 
             <!-- Slider Container (Viewport) -->
             <div class="w-full max-w-[500px] mx-auto overflow-hidden pb-10 px-4">
-                
+
                 <!-- Slider Track (Holds both phones) -->
-                <div id="slider-track" class="flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full">
-                    
+                <div id="slider-track"
+                    class="flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full">
+
                     <!-- SLIDE 1: Partner App -->
                     <div class="w-full flex-shrink-0 flex justify-center px-2">
                         <!-- iPhone Frame -->
-                        <div class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2rem] h-[700px] w-[340px] sm:h-[780px] sm:w-[380px] shadow-2xl flex flex-col overflow-hidden ring-1 ring-slate-900/5">
-                            
+                        <div
+                            class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2rem] h-[700px] w-[340px] sm:h-[780px] sm:w-[380px] shadow-2xl flex flex-col overflow-hidden ring-1 ring-slate-900/5">
+
                             <!-- Dynamic Island -->
-                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center pointer-events-none">
                                 <div class="w-16 h-4 bg-gray-800/50 rounded-full"></div>
                             </div>
-                            
+
                             <!-- Side Buttons -->
                             <div class="h-10 w-[3px] bg-gray-800 absolute -left-[17px] top-[100px] rounded-l-lg"></div>
                             <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[150px] rounded-l-lg"></div>
@@ -329,33 +525,46 @@
 
                             <!-- Screen Content -->
                             <div class="h-full w-full bg-white rounded-[1.8rem] overflow-hidden relative bg-slate-50">
-                                
+
                                 <!-- GATE OVERLAY (PARTNER) -->
-                                <div id="gate-partner" class="absolute inset-0 z-40 flex items-end justify-center bg-slate-900/20 backdrop-blur-md transition-all duration-700 ease-in-out">
-                                    <div class="bg-white w-full h-full pt-12 px-4 pb-6 md:pt-16 md:px-6 flex flex-col justify-center relative overflow-y-auto no-scrollbar">
+                                <div id="gate-partner"
+                                    class="absolute inset-0 z-40 flex items-end justify-center bg-slate-900/20 backdrop-blur-md transition-all duration-700 ease-in-out">
+                                    <div
+                                        class="bg-white w-full h-full pt-12 px-4 pb-6 md:pt-16 md:px-6 flex flex-col justify-center relative overflow-y-auto no-scrollbar">
                                         <div class="text-center mb-6">
                                             <div class="flex justify-center mb-4">
-                                                <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                                <div
+                                                    class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg">
                                                     <img src="/Propel Labs Logo.png" alt="">
                                                 </div>
                                             </div>
                                             <h3 class="text-xl font-bold text-slate-900">Unlock Partner App</h3>
-                                            <p class="text-slate-500 mt-2 text-xs">Enter your details to access the Partner Dashboard.</p>
+                                            <p class="text-slate-500 mt-2 text-xs">Enter your details to access the
+                                                Partner Dashboard.</p>
                                         </div>
                                         <form id="form-partner" class="space-y-3">
                                             <div>
-                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Full Name *">
+                                                <input type="text" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Full Name *">
                                             </div>
                                             <div>
-                                                <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Work Email *">
+                                                <input type="email" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Work Email *">
                                             </div>
                                             <div>
-                                                <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Mobile Number *">
+                                                <input type="tel" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Mobile Number *">
                                             </div>
                                             <div>
-                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Company Name *">
+                                                <input type="text" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Company Name *">
                                             </div>
-                                            <button type="submit" class="w-full bg-brand-600 text-white font-bold py-3.5 rounded-xl hover:bg-brand-700 transition-all shadow-lg shadow-brand-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
+                                            <button type="submit"
+                                                class="w-full bg-brand-600 text-white font-bold py-3.5 rounded-xl hover:bg-brand-700 transition-all shadow-lg shadow-brand-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
                                                 Launch Partner App <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                             </button>
                                             <p class="text-[10px] text-center text-slate-400 mt-2">
@@ -366,13 +575,13 @@
                                 </div>
 
                                 <!-- Placeholder BG -->
-                                <div id="placeholder-partner" class="absolute inset-0 bg-slate-100 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center z-0"></div>
+                                <div id="placeholder-partner"
+                                    class="absolute inset-0 bg-slate-100 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center z-0">
+                                </div>
                                 <div class="h-8 w-full bg-white absolute top-0 left-0 z-30"></div>
 
                                 <!-- IFRAME (PARTNER) -->
-                                <iframe 
-                                    id="frame-partner"
-                                    data-src="https://propelapps-vtfb.vercel.app/" 
+                                <iframe id="frame-partner" data-src="https://propelapps-vtfb.vercel.app/"
                                     title="Partner App Demo"
                                     class="w-full h-full border-0 absolute inset-0 z-20 opacity-0 pointer-events-none transition-opacity duration-1000 pt-8"
                                     allowfullscreen>
@@ -384,13 +593,15 @@
                     <!-- SLIDE 2: Customer App -->
                     <div class="w-full flex-shrink-0 flex justify-center px-2">
                         <!-- iPhone Frame -->
-                        <div class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2rem] h-[700px] w-[340px] sm:h-[780px] sm:w-[380px] shadow-2xl flex flex-col overflow-hidden ring-1 ring-slate-900/5">
-                            
+                        <div
+                            class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2rem] h-[700px] w-[340px] sm:h-[780px] sm:w-[380px] shadow-2xl flex flex-col overflow-hidden ring-1 ring-slate-900/5">
+
                             <!-- Dynamic Island -->
-                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center pointer-events-none">
                                 <div class="w-16 h-4 bg-gray-800/50 rounded-full"></div>
                             </div>
-                            
+
                             <!-- Side Buttons -->
                             <div class="h-10 w-[3px] bg-gray-800 absolute -left-[17px] top-[100px] rounded-l-lg"></div>
                             <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[150px] rounded-l-lg"></div>
@@ -399,33 +610,46 @@
 
                             <!-- Screen Content -->
                             <div class="h-full w-full bg-white rounded-[1.8rem] overflow-hidden relative bg-slate-50">
-                                
+
                                 <!-- GATE OVERLAY (CUSTOMER) -->
-                                <div id="gate-customer" class="absolute inset-0 z-40 flex items-end justify-center bg-slate-900/20 backdrop-blur-md transition-all duration-700 ease-in-out">
-                                    <div class="bg-white w-full h-full pt-12 px-4 pb-6 md:pt-16 md:px-6 flex flex-col justify-center relative overflow-y-auto no-scrollbar">
+                                <div id="gate-customer"
+                                    class="absolute inset-0 z-40 flex items-end justify-center bg-slate-900/20 backdrop-blur-md transition-all duration-700 ease-in-out">
+                                    <div
+                                        class="bg-white w-full h-full pt-12 px-4 pb-6 md:pt-16 md:px-6 flex flex-col justify-center relative overflow-y-auto no-scrollbar">
                                         <div class="text-center mb-6">
                                             <div class="flex justify-center mb-4">
-                                                <div class="w-11 h-11 bg-rose-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                                <div
+                                                    class="w-11 h-11 bg-rose-500 rounded-xl flex items-center justify-center text-white shadow-lg">
                                                     <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                                                 </div>
                                             </div>
                                             <h3 class="text-xl font-bold text-slate-900">Unlock Customer App</h3>
-                                            <p class="text-slate-500 mt-2 text-xs">Enter your details to experience the Buyer Journey.</p>
+                                            <p class="text-slate-500 mt-2 text-xs">Enter your details to experience the
+                                                Buyer Journey.</p>
                                         </div>
                                         <form id="form-customer" class="space-y-3">
                                             <div>
-                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Full Name *">
+                                                <input type="text" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Full Name *">
                                             </div>
                                             <div>
-                                                <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Personal Email *">
+                                                <input type="email" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Personal Email *">
                                             </div>
                                             <div>
-                                                <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Mobile Number *">
+                                                <input type="tel" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Mobile Number *">
                                             </div>
                                             <div>
-                                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400" placeholder="Company Name *">
+                                                <input type="text" required
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    placeholder="Company Name *">
                                             </div>
-                                            <button type="submit" class="w-full bg-rose-500 text-white font-bold py-3.5 rounded-xl hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
+                                            <button type="submit"
+                                                class="w-full bg-rose-500 text-white font-bold py-3.5 rounded-xl hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
                                                 Launch Customer App <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                             </button>
                                             <p class="text-[10px] text-center text-slate-400 mt-2">
@@ -436,13 +660,13 @@
                                 </div>
 
                                 <!-- Placeholder BG -->
-                                <div id="placeholder-customer" class="absolute inset-0 bg-slate-100 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center z-0"></div>
+                                <div id="placeholder-customer"
+                                    class="absolute inset-0 bg-slate-100 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center z-0">
+                                </div>
                                 <div class="h-8 w-full bg-white absolute top-0 left-0 z-30"></div>
 
                                 <!-- IFRAME (CUSTOMER) -->
-                                <iframe 
-                                    id="frame-customer"
-                                    data-src="https://propel-customerapp.vercel.app/" 
+                                <iframe id="frame-customer" data-src="https://propel-customerapp.vercel.app/"
                                     title="Customer App Demo"
                                     class="w-full h-full border-0 absolute inset-0 z-20 opacity-0 pointer-events-none transition-opacity duration-1000 pt-8"
                                     allowfullscreen>
@@ -453,7 +677,7 @@
 
                 </div>
             </div>
-            
+
         </div>
     </section>
 
@@ -470,11 +694,16 @@
     </section> -->
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/919119511194" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center justify-center group" aria-label="Chat on WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-9.676-.272-.099-.47-.149-.669-.149-.198 0-.42.001-.643.001-.223 0-.586.085-.892.41-.307.325-1.177 1.151-1.177 2.807 0 1.657 1.207 3.259 1.376 3.497.169.237 2.375 3.627 5.755 5.087 2.289.988 2.753.791 3.248.742.495-.05 1.591-.65 1.814-1.277.223-.627.223-1.165.156-1.277z"/>
+    <a href="https://wa.me/919119511194" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center justify-center group"
+        aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"
+            class="w-8 h-8">
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-9.676-.272-.099-.47-.149-.669-.149-.198 0-.42.001-.643.001-.223 0-.586.085-.892.41-.307.325-1.177 1.151-1.177 2.807 0 1.657 1.207 3.259 1.376 3.497.169.237 2.375 3.627 5.755 5.087 2.289.988 2.753.791 3.248.742.495-.05 1.591-.65 1.814-1.277.223-.627.223-1.165.156-1.277z" />
         </svg>
-        <span class="absolute right-full mr-3 bg-white text-slate-800 px-3 py-1 rounded-lg text-sm font-semibold shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        <span
+            class="absolute right-full mr-3 bg-white text-slate-800 px-3 py-1 rounded-lg text-sm font-semibold shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
             Chat with us
         </span>
     </a>
@@ -484,26 +713,35 @@
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Everything You Need to Close Deals</h2>
-                <p class="text-lg text-slate-500">Propel Labs provides a comprehensive suite of tools designed to streamline every aspect of the real estate sales lifecycle.</p>
+                <p class="text-lg text-slate-500">Propel Labs provides a comprehensive suite of tools designed to
+                    streamline every aspect of the real estate sales lifecycle.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Feature 1 -->
-                <div class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
-                        <i data-lucide="layout-dashboard" class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors"></i>
+                <div
+                    class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <i data-lucide="layout-dashboard"
+                            class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Partner Dashboard</h3>
-                    <p class="text-slate-500 leading-relaxed">Centralized hub for all metrics. Track total leads, scheduled visits, and team performance at a glance.</p>
+                    <p class="text-slate-500 leading-relaxed">Centralized hub for all metrics. Track total leads,
+                        scheduled visits, and team performance at a glance.</p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
-                        <i data-lucide="wallet" class="w-7 h-7 text-green-600 group-hover:text-white transition-colors"></i>
+                <div
+                    class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
+                        <i data-lucide="wallet"
+                            class="w-7 h-7 text-green-600 group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Incentive Tracking</h3>
-                    <p class="text-slate-500 leading-relaxed">Transparent financial tracking. View "Incentive Due" vs "Raised" instantly and manage payouts.</p>
+                    <p class="text-slate-500 leading-relaxed">Transparent financial tracking. View "Incentive Due" vs
+                        "Raised" instantly and manage payouts.</p>
                 </div>
 
                 <!-- Feature 3 -->
@@ -516,30 +754,42 @@
                 </div> -->
 
                 <!-- Feature 4 -->
-                <div class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 transition-colors duration-300">
-                        <i data-lucide="users" class="w-7 h-7 text-amber-600 group-hover:text-white transition-colors"></i>
+                <div
+                    class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 transition-colors duration-300">
+                        <i data-lucide="users"
+                            class="w-7 h-7 text-amber-600 group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Lead Management</h3>
-                    <p class="text-slate-500 leading-relaxed">Never lose a lead. Organize site visits, follow-ups, and customer data in a secure CRM.</p>
+                    <p class="text-slate-500 leading-relaxed">Never lose a lead. Organize site visits, follow-ups, and
+                        customer data in a secure CRM.</p>
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-14 h-14 bg-rose-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rose-600 transition-colors duration-300">
-                        <i data-lucide="smartphone" class="w-7 h-7 text-rose-600 group-hover:text-white transition-colors"></i>
+                <div
+                    class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 bg-rose-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rose-600 transition-colors duration-300">
+                        <i data-lucide="smartphone"
+                            class="w-7 h-7 text-rose-600 group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Mobile First</h3>
-                    <p class="text-slate-500 leading-relaxed">Access your entire portfolio on the go. Optimized for smartphones and tablets.</p>
+                    <p class="text-slate-500 leading-relaxed">Access your entire portfolio on the go. Optimized for
+                        smartphones and tablets.</p>
                 </div>
 
                 <!-- Feature 6 -->
-                <div class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors duration-300">
-                        <i data-lucide="wrench" class="w-7 h-7 text-teal-600 group-hover:text-white transition-colors"></i>
+                <div
+                    class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors duration-300">
+                        <i data-lucide="wrench"
+                            class="w-7 h-7 text-teal-600 group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Service Requests</h3>
-                    <p class="text-slate-500 leading-relaxed">Submit and track service requests or demand letters directly from the partner portal.</p>
+                    <p class="text-slate-500 leading-relaxed">Submit and track service requests or demand letters
+                        directly from the partner portal.</p>
                 </div>
             </div>
         </div>
@@ -550,15 +800,23 @@
     <!-- CTA Section -->
     <section class="py-12 md:py-24" id="solutions">
         <div class="container mx-auto px-6">
-            <div class="bg-gradient-to-r from-brand-600 to-indigo-600 rounded-3xl p-10 lg:p-20 text-center text-white shadow-2xl relative overflow-hidden">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                
+            <div
+                class="bg-gradient-to-r from-brand-600 to-indigo-600 rounded-3xl p-10 lg:p-20 text-center text-white shadow-2xl relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+                </div>
+
                 <div class="relative z-10 max-w-2xl mx-auto">
                     <h2 class="text-3xl lg:text-4xl font-bold mb-6">Ready to scale your business?</h2>
-                    <p class="text-blue-100 text-lg mb-10">Join thousands of partners who are managing leads and earning incentives faster with Propel Labs.</p>
+                    <p class="text-blue-100 text-lg mb-10">Join thousands of partners who are managing leads and earning
+                        incentives faster with Propel Labs.</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#demo" class="bg-white text-brand-600 px-8 py-4 rounded-full font-bold hover:bg-brand-50 transition-all shadow-lg">Get Started Now</a>
-                        <a href="#footer" class="border border-white/30 hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all">Contact Sales</a>
+                        <a href="#demo"
+                            class="bg-white text-brand-600 px-8 py-4 rounded-full font-bold hover:bg-brand-50 transition-all shadow-lg">Get
+                            Started Now</a>
+                        <a href="#footer"
+                            class="border border-white/30 hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all">Contact
+                            Sales</a>
                     </div>
                 </div>
             </div>
@@ -571,14 +829,16 @@
             <div class="grid md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
                 <div class="col-span-1 md:col-span-1">
                     <a href="#" class="flex items-center justify-center md:justify-start gap-2 mb-4 text-white">
-                       <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-                        <img src="/Propel Labs Logo.png" alt="">
-                    </div>
+                        <div
+                            class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                            <img src="/Propel Labs Logo.png" alt="">
+                        </div>
                         <span class="text-xl font-bold">Propel<span class="text-brand-500">Labs</span></span>
                     </a>
-                    <p class="text-sm">Innovations for real estate. Streamlining customer relationships and partner success.</p>
+                    <p class="text-sm">Innovations for real estate. Streamlining customer relationships and partner
+                        success.</p>
                 </div>
-                
+
                 <div>
                     <h4 class="text-white font-semibold mb-4">Platform</h4>
                     <ul class="space-y-2 text-sm">
@@ -633,7 +893,7 @@
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-        
+
         menuBtn.addEventListener('click', () => {
             const isHidden = mobileMenu.classList.contains('translate-x-full');
             if (isHidden) {
@@ -654,7 +914,7 @@
             const track = document.getElementById('slider-track');
             const btnPartner = document.getElementById('btn-partner');
             const btnCustomer = document.getElementById('btn-customer');
-            
+
             // Move Track
             track.style.transform = `translateX(-${index * 100}%)`;
 
@@ -677,30 +937,30 @@
             const frame = document.getElementById(frameId);
             const placeholder = document.getElementById(placeholderId);
 
-            if(!form) return;
+            if (!form) return;
 
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
+
                 const submitBtn = form.querySelector('button');
                 const originalText = submitBtn.innerHTML;
-                
+
                 submitBtn.innerHTML = 'Unlocking...';
                 submitBtn.disabled = true;
 
                 setTimeout(() => {
                     // Hide Gate
                     gate.classList.add('demo-hidden');
-                    
+
                     // Load Iframe
-                    if(frame.getAttribute('data-src')) {
+                    if (frame.getAttribute('data-src')) {
                         frame.src = frame.getAttribute('data-src');
                     }
                     frame.classList.remove('opacity-0', 'pointer-events-none');
-                    
+
                     // Hide placeholder
                     setTimeout(() => {
-                        if(placeholder) placeholder.style.display = 'none';
+                        if (placeholder) placeholder.style.display = 'none';
                     }, 500);
 
                 }, 800);
@@ -713,4 +973,5 @@
 
     </script>
 </body>
+
 </html>
