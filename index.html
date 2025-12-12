@@ -27,17 +27,22 @@
                     },
                     colors: {
                         brand: {
-                            50: '#F0F5FF', // Lighter
-                            100: '#E0EAFF',
-                            200: '#C7D9FE',
-                            300: '#A4C2FD',
-                            400: '#7B9FF9',
-                            500: '#3B82F6', // Logo Base
-                            600: '#2563EB', // Vibrant
-                            700: '#1D4ED8', // Deep
-                            800: '#1E40AF',
-                            900: '#1E3A8A', // Darkest
-                            950: '#172554',
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6', // Standard Blue
+                            600: '#2563EB', // Vibrant Royal Blue (Arrow)
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a', // Deep Navy
+                            950: '#172554', // Darkest Navy
+                        },
+                        accent: {
+                            400: '#fbbf24',
+                            500: '#f59e0b', // Logo Gold/Amber
+                            600: '#ea580c', // Logo Orange
                         },
                         slate: {
                             850: '#151e2e',
@@ -45,8 +50,8 @@
                         }
                     },
                     boxShadow: {
-                        'glow': '0 0 40px -10px rgba(59, 130, 246, 0.5)',
-                        'glow-sm': '0 0 20px -5px rgba(59, 130, 246, 0.3)',
+                        'glow': '0 0 40px -10px rgba(37, 99, 235, 0.5)',
+                        'glow-sm': '0 0 20px -5px rgba(37, 99, 235, 0.3)',
                         'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
                         'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.05)',
                     },
@@ -191,8 +196,8 @@
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
                     <div
-                        class="w-10 h-10 bg-gradient-to-br from-brand-600 to-brand-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform duration-300">
-                        <img src="/Propel Labs Logo.png" alt="" class="w-6 h-6 object-contain brightness-0 invert">
+                        class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/10 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <img src="/logo-new.png" alt="Propel Labs" class="w-full h-full object-contain p-1">
                     </div>
                     <span class="text-xl font-bold text-slate-900 tracking-tight">Propel<span
                             class="text-brand-600">Labs</span></span>
@@ -217,7 +222,7 @@
                     <a href="https://propelapps-vtfb.vercel.app/" target="_blank"
                         class="text-sm font-bold text-slate-700 hover:text-brand-600 transition-colors">Login</a>
                     <a href="#demo"
-                        class="bg-brand-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-brand-700 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 hover:-translate-y-0.5 active:translate-y-0">
+                        class="bg-gradient-to-r from-accent-500 to-accent-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-accent-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all">
                         Enroll Now
                     </a>
                 </div>
@@ -244,7 +249,7 @@
                     <a href="https://propelapps-vtfb.vercel.app/" target="_blank"
                         class="w-full text-center py-4 rounded-xl border-2 border-slate-200 font-bold text-slate-700 hover:bg-slate-50">Login</a>
                     <a href="#demo"
-                        class="mobile-link w-full text-center py-4 rounded-xl bg-brand-600 text-white font-bold shadow-lg shadow-brand-500/30 hover:bg-brand-700">Enroll
+                        class="mobile-link w-full text-center py-4 rounded-xl bg-accent-500 text-white font-bold shadow-lg shadow-accent-500/30 hover:bg-accent-600">Enroll
                         Now</a>
                 </div>
             </div>
@@ -257,7 +262,7 @@
         <div class="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 rounded-full blur-[100px] -z-10 animate-float">
         </div>
         <div
-            class="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-[100px] -z-10 animate-float-delayed">
+            class="absolute bottom-20 right-10 w-96 h-96 bg-brand-400/20 rounded-full blur-[100px] -z-10 animate-float-delayed">
         </div>
 
         <div class="container mx-auto px-6">
@@ -267,7 +272,7 @@
                 <div class="lg:w-1/2 text-center lg:text-left z-10 animate-slide-up">
                     <div
                         class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 border border-white/50 backdrop-blur-sm shadow-sm text-brand-700 text-xs font-bold uppercase tracking-wider mb-8">
-                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        <span class="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
                         The Future of Real Estate Sales
                     </div>
 
@@ -296,6 +301,7 @@
                         </a>
                     </div>
 
+                    <!-- Stats Area -->
                     <div
                         class="mt-16 pt-8 border-t border-slate-200/50 flex flex-wrap items-center justify-center lg:justify-start gap-8 opacity-80">
                         <div class="text-center lg:text-left">
@@ -332,7 +338,7 @@
                             class="absolute bottom-32 -right-16 z-20 glass p-4 rounded-2xl shadow-lg animate-float-delayed w-44 hidden md:block">
                             <div class="flex items-center gap-3 mb-2">
                                 <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-blue-600"></i>
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i>
                                 </div>
                                 <span class="text-xs font-bold text-slate-600">Task Complete</span>
                             </div>
@@ -400,7 +406,7 @@
                                         </div>
                                         <div class="flex flex-col items-center gap-2">
                                             <div
-                                                class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shadow-sm">
+                                                class="w-12 h-12 rounded-2xl bg-accent-50 text-accent-600 flex items-center justify-center shadow-sm">
                                                 <i data-lucide="file-text" class="w-6 h-6"></i>
                                             </div>
                                             <span class="text-[10px] font-medium text-slate-600">Quote</span>
@@ -439,12 +445,12 @@
                                                 <h5 class="text-sm font-bold text-slate-900">Sneha Kumar</h5>
                                                 <p class="text-xs text-slate-500">Site Visit Tomorrow</p>
                                             </div>
-                                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                            <span class="w-2 h-2 rounded-full bg-accent-500"></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Bottom Navigation overlay for visual realism -->
+                                <!-- Bottom Navigation overlay -->
                                 <div
                                     class="absolute bottom-0 w-full h-16 bg-white border-t border-slate-100 flex justify-around items-center px-4">
                                     <i data-lucide="home" class="w-6 h-6 text-brand-600 filled fill-current"></i>
@@ -472,11 +478,11 @@
             <!-- Section Header -->
             <div class="max-w-3xl mx-auto mb-8">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-wider mb-4">
                     <span class="relative flex h-2 w-2">
                         <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
                     </span>
                     Live App Preview
                 </div>
@@ -517,12 +523,6 @@
                                 <div class="w-16 h-4 bg-gray-800/50 rounded-full"></div>
                             </div>
 
-                            <!-- Side Buttons -->
-                            <div class="h-10 w-[3px] bg-gray-800 absolute -left-[17px] top-[100px] rounded-l-lg"></div>
-                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[150px] rounded-l-lg"></div>
-                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[225px] rounded-l-lg"></div>
-                            <div class="h-20 w-[3px] bg-gray-800 absolute -right-[17px] top-[170px] rounded-r-lg"></div>
-
                             <!-- Screen Content -->
                             <div class="h-full w-full bg-white rounded-[1.8rem] overflow-hidden relative bg-slate-50">
 
@@ -534,8 +534,8 @@
                                         <div class="text-center mb-6">
                                             <div class="flex justify-center mb-4">
                                                 <div
-                                                    class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                                    <img src="/Propel Labs Logo.png" alt="">
+                                                    class="w-11 h-11 bg-white p-1 rounded-xl flex items-center justify-center shadow-lg">
+                                                    <img src="/logo-new.png" alt="" class="object-contain">
                                                 </div>
                                             </div>
                                             <h3 class="text-xl font-bold text-slate-900">Unlock Partner App</h3>
@@ -602,12 +602,6 @@
                                 <div class="w-16 h-4 bg-gray-800/50 rounded-full"></div>
                             </div>
 
-                            <!-- Side Buttons -->
-                            <div class="h-10 w-[3px] bg-gray-800 absolute -left-[17px] top-[100px] rounded-l-lg"></div>
-                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[150px] rounded-l-lg"></div>
-                            <div class="h-16 w-[3px] bg-gray-800 absolute -left-[17px] top-[225px] rounded-l-lg"></div>
-                            <div class="h-20 w-[3px] bg-gray-800 absolute -right-[17px] top-[170px] rounded-r-lg"></div>
-
                             <!-- Screen Content -->
                             <div class="h-full w-full bg-white rounded-[1.8rem] overflow-hidden relative bg-slate-50">
 
@@ -619,7 +613,7 @@
                                         <div class="text-center mb-6">
                                             <div class="flex justify-center mb-4">
                                                 <div
-                                                    class="w-11 h-11 bg-rose-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                                    class="w-11 h-11 bg-accent-500 rounded-xl flex items-center justify-center text-white shadow-lg">
                                                     <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                                                 </div>
                                             </div>
@@ -630,26 +624,26 @@
                                         <form id="form-customer" class="space-y-3">
                                             <div>
                                                 <input type="text" required
-                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-accent-500 focus:ring-2 focus:ring-accent-200 outline-none transition-all text-sm placeholder:text-slate-400"
                                                     placeholder="Full Name *">
                                             </div>
                                             <div>
                                                 <input type="email" required
-                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-accent-500 focus:ring-2 focus:ring-accent-200 outline-none transition-all text-sm placeholder:text-slate-400"
                                                     placeholder="Personal Email *">
                                             </div>
                                             <div>
                                                 <input type="tel" required
-                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-accent-500 focus:ring-2 focus:ring-accent-200 outline-none transition-all text-sm placeholder:text-slate-400"
                                                     placeholder="Mobile Number *">
                                             </div>
                                             <div>
                                                 <input type="text" required
-                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all text-sm placeholder:text-slate-400"
+                                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-accent-500 focus:ring-2 focus:ring-accent-200 outline-none transition-all text-sm placeholder:text-slate-400"
                                                     placeholder="Company Name *">
                                             </div>
                                             <button type="submit"
-                                                class="w-full bg-rose-500 text-white font-bold py-3.5 rounded-xl hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
+                                                class="w-full bg-accent-500 text-white font-bold py-3.5 rounded-xl hover:bg-accent-600 transition-all shadow-lg shadow-accent-500/30 flex items-center justify-center gap-2 mt-4 active:scale-95">
                                                 Launch Customer App <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                             </button>
                                             <p class="text-[10px] text-center text-slate-400 mt-2">
@@ -681,34 +675,7 @@
         </div>
     </section>
 
-    <!-- Brands/Trust Section -->
-    <!-- <section class="py-6 md:py-10 border-y border-slate-100 bg-slate-50/50">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-8">Trusted by top developers</p>
-            <div class="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                <h3 class="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2"><i data-lucide="building" class="w-5 h-5 md:w-6 md:h-6"></i> JANAPRIYA</h3>
-                <h3 class="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2"><i data-lucide="home" class="w-5 h-5 md:w-6 md:h-6"></i> AURO REALTY</h3>
-                <h3 class="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2"><i data-lucide="box" class="w-5 h-5 md:w-6 md:h-6"></i> THE REGENT</h3>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/919119511194" target="_blank"
-        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center justify-center group"
-        aria-label="Chat on WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"
-            class="w-8 h-8">
-            <path
-                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-9.676-.272-.099-.47-.149-.669-.149-.198 0-.42.001-.643.001-.223 0-.586.085-.892.41-.307.325-1.177 1.151-1.177 2.807 0 1.657 1.207 3.259 1.376 3.497.169.237 2.375 3.627 5.755 5.087 2.289.988 2.753.791 3.248.742.495-.05 1.591-.65 1.814-1.277.223-.627.223-1.165.156-1.277z" />
-        </svg>
-        <span
-            class="absolute right-full mr-3 bg-white text-slate-800 px-3 py-1 rounded-lg text-sm font-semibold shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            Chat with us
-        </span>
-    </a>
-
-    <!-- Features Grid -->
+    <!-- Features Grid (Original Content) -->
     <section id="features" class="py-12 md:py-24 bg-white scroll-mt-20">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -744,22 +711,13 @@
                         "Raised" instantly and manage payouts.</p>
                 </div>
 
-                <!-- Feature 3 -->
-                <!-- <div class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
-                        <i data-lucide="megaphone" class="w-7 h-7 text-purple-600 group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Marketing Kit</h3>
-                    <p class="text-slate-500 leading-relaxed">Download brochures, floor plans, and high-res images for projects like "The Regent" with one click.</p>
-                </div> -->
-
                 <!-- Feature 4 -->
                 <div
                     class="group p-6 md:p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div
-                        class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 transition-colors duration-300">
+                        class="w-14 h-14 bg-accent-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-600 transition-colors duration-300">
                         <i data-lucide="users"
-                            class="w-7 h-7 text-amber-600 group-hover:text-white transition-colors"></i>
+                            class="w-7 h-7 text-accent-600 group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Lead Management</h3>
                     <p class="text-slate-500 leading-relaxed">Never lose a lead. Organize site visits, follow-ups, and
@@ -795,21 +753,19 @@
         </div>
     </section>
 
-    <!-- Marketing Kit Showcase removed as requested -->
-
     <!-- CTA Section -->
     <section class="py-12 md:py-24" id="solutions">
         <div class="container mx-auto px-6">
             <div
-                class="bg-gradient-to-r from-brand-600 to-indigo-600 rounded-3xl p-10 lg:p-20 text-center text-white shadow-2xl relative overflow-hidden">
+                class="bg-gradient-to-r from-brand-600 to-brand-800 rounded-3xl p-10 lg:p-20 text-center text-white shadow-2xl relative overflow-hidden">
                 <div
                     class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
                 </div>
 
                 <div class="relative z-10 max-w-2xl mx-auto">
                     <h2 class="text-3xl lg:text-4xl font-bold mb-6">Ready to scale your business?</h2>
-                    <p class="text-blue-100 text-lg mb-10">Join thousands of partners who are managing leads and earning
-                        incentives faster with Propel Labs.</p>
+                    <p class="text-brand-100 text-lg mb-10">Join thousands of partners who are managing leads and
+                        earning incentives faster with Propel Labs.</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
                         <a href="#demo"
                             class="bg-white text-brand-600 px-8 py-4 rounded-full font-bold hover:bg-brand-50 transition-all shadow-lg">Get
@@ -830,8 +786,8 @@
                 <div class="col-span-1 md:col-span-1">
                     <a href="#" class="flex items-center justify-center md:justify-start gap-2 mb-4 text-white">
                         <div
-                            class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-                            <img src="/Propel Labs Logo.png" alt="">
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-slate-900 shadow-lg overflow-hidden p-1">
+                            <img src="/logo-new.png" alt="" class="object-contain">
                         </div>
                         <span class="text-xl font-bold">Propel<span class="text-brand-500">Labs</span></span>
                     </a>
@@ -873,6 +829,21 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919119511194" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center justify-center group"
+        aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"
+            class="w-8 h-8">
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-9.676-.272-.099-.47-.149-.669-.149-.198 0-.42.001-.643.001-.223 0-.586.085-.892.41-.307.325-1.177 1.151-1.177 2.807 0 1.657 1.207 3.259 1.376 3.497.169.237 2.375 3.627 5.755 5.087 2.289.988 2.753.791 3.248.742.495-.05 1.591-.65 1.814-1.277.223-.627.223-1.165.156-1.277z" />
+        </svg>
+        <span
+            class="absolute right-full mr-3 bg-white text-slate-800 px-3 py-1 rounded-lg text-sm font-semibold shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Chat with us
+        </span>
+    </a>
 
     <!-- Scripts -->
     <script>
@@ -943,7 +914,6 @@
                 e.preventDefault();
 
                 const submitBtn = form.querySelector('button');
-                const originalText = submitBtn.innerHTML;
 
                 submitBtn.innerHTML = 'Unlocking...';
                 submitBtn.disabled = true;
