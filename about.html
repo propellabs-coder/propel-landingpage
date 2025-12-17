@@ -2,11 +2,82 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBFFVX4E1H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GBFFVX4E1H');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Propellabs</title>
+
+    <!-- SEO Meta Tags -->
+    <title>About Propel Labs | Real Estate Innovation & Technology</title>
     <meta name="description"
-        content="Propellabs - Powering Propbricks Innovation Private Limited. Revolutionizing real estate with high-quality digital solutions.">
+        content="Learn about Propel Labs (Propbricks Innovation). We are bridging the gap in the real estate lifecycle with seamless, user-centric mobile applications for partners and customers.">
+    <meta name="keywords"
+        content="About Propel Labs, Real Estate Technology Company, Propbricks Innovation, Real Estate App Developers, Pune Real Estate Tech">
+    <meta name="author" content="Propel Labs">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://propellabs.com/about.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://propellabs.com/about.html">
+    <meta property="og:title" content="About Propel Labs | Innovating Real Estate Sales">
+    <meta property="og:description"
+        content="Propel Labs is dedicated to revolutionizing the real estate sector with high-quality digital solutions. Meet our leadership and vision.">
+    <meta property="og:image" content="https://propellabs.com/propellabs.png">
+    <meta property="og:site_name" content="Propel Labs">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://propellabs.com/about.html">
+    <meta name="twitter:title" content="About Propel Labs | Real Estate Innovation">
+    <meta name="twitter:description" content="We bridge the gap between developers, partners, and customers.">
+    <meta name="twitter:image" content="https://propellabs.com/propellabs.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo-new.png">
+    <link rel="apple-touch-icon" href="/logo-new.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Propel Labs",
+        "url": "https://propellabs.com",
+        "logo": "https://propellabs.com/logo-new.png",
+        "foundingDate": "2025-05",
+        "founders": [
+            {
+                "@type": "Person",
+                "name": "Pritam Joshi",
+                "jobTitle": "Director & Co-Founder"
+            }
+        ],
+        "description": "Propel Labs (Propbricks Innovation Private Limited) is a technology company specializing in digital solutions for the real estate sector.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Flat No 402, Block B, Akshay Vishar Society, Uttamanagar Shivane",
+            "addressLocality": "Pune",
+            "postalCode": "411023",
+            "addressCountry": "IN"
+        },
+        "sameAs": [
+            "https://twitter.com/propellabs",
+            "https://www.linkedin.com/company/propellabs",
+            "https://www.facebook.com/propellabs"
+        ]
+      }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,10 +100,20 @@
                         brand: {
                             50: '#eff6ff',
                             100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
                             500: '#3b82f6',
-                            600: '#2563eb',
+                            600: '#2563EB',
                             700: '#1d4ed8',
-                            900: '#1e3a8a',
+                            800: '#1e40af',
+                            900: '#0B1C3E', // Deep Navy (New Brand Color)
+                            950: '#050a19',
+                        },
+                        accent: {
+                            400: '#fbbf24',
+                            500: '#F58220', // Vibrant Orange (New Brand Color)
+                            600: '#ea580c',
                         },
                         slate: {
                             850: '#151e2e',
@@ -77,8 +158,8 @@
                         class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-slate-900 shadow-lg group-hover:scale-105 transition-transform overflow-hidden p-1">
                         <img src="/logo-new.png" alt="Propel Labs" class="w-full h-full object-contain">
                     </div>
-                    <span class="text-xl font-bold text-slate-900 tracking-tight">Propel<span
-                            class="text-brand-600">Labs</span></span>
+                    <span class="text-xl font-bold text-brand-900 tracking-tight">Propel<span
+                            class="text-accent-500">Labs</span></span>
                 </a>
 
                 <div class="hidden md:flex items-center gap-8">
@@ -312,9 +393,9 @@
     </main>
 
     <!-- Footer (Same as index) -->
-    <footer class="bg-slate-900 text-slate-400 py-8 md:py-12 border-t-4 border-indigo-500 relative overflow-hidden"
+    <footer class="bg-slate-900 text-slate-400 py-8 md:py-12 border-t-4 border-brand-900 relative overflow-hidden"
         id="footer">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-900 via-brand-600 to-accent-500"></div>
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
                 <div class="col-span-1 md:col-span-1">
@@ -323,7 +404,8 @@
                             class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-slate-900 shadow-lg overflow-hidden p-1">
                             <img src="/logo-new.png" alt="" class="object-contain">
                         </div>
-                        <span class="text-xl font-bold">Propel<span class="text-brand-500">Labs</span></span>
+                        <span class="text-xl font-bold text-brand-900">Propel<span
+                                class="text-accent-500">Labs</span></span>
                     </a>
                     <p class="text-sm">Innovations for real estate. Streamlining customer relationships and partner
                         success.</p>
