@@ -996,6 +996,42 @@
         // TODO: PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyVQrlBS3dqz9qi1rUh8dEJjzApva8dyJ8fIVzyd04-tlKCQForxFCNN_CVn30p4hjS/exec'; 
 
+        // --- GOOGLE SHEET SUBMISSION LOGIC ---
+  function sendToGoogleSheet(form, sourceName) {
+    const formData = new FormData(form);
+
+    // Add source field (Partner / Customer / etc.)
+    formData.append('source', sourceName);
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('Sheet response:', data);
+    })
+    .catch(err => {
+      console.error('Google Sheet Error:', err);
+    });
+  }
+
+  // Partner Form
+  const partnerForm = document.getElementById('form-partner');
+  if (partnerForm) {
+    partnerForm.addEventListener('submit', function () {
+      sendToGoogleSheet(partnerForm, 'Partner');
+    });
+  }
+
+  // Customer Form
+  const customerForm = document.getElementById('form-customer');
+  if (customerForm) {
+    customerForm.addEventListener('submit', function () {
+      sendToGoogleSheet(customerForm, 'Customer');
+    });
+  }
+        
         // --- GATE UNLOCK LOGIC (Generic) ---
         function setupGate(formId, gateId, frameId, placeholderId) {
             const form = document.getElementById(formId);
