@@ -128,17 +128,17 @@
                             200: '#bfdbfe',
                             300: '#93c5fd',
                             400: '#60a5fa',
-                            500: '#3b82f6', // Standard Blue
-                            600: '#2563EB', // Vibrant Royal Blue (Arrow)
+                            500: '#3b82f6',
+                            600: '#2563EB',
                             700: '#1d4ed8',
                             800: '#1e40af',
-                            900: '#1e3a8a', // Deep Navy
-                            950: '#172554', // Darkest Navy
+                            900: '#0B1C3E', // Deep Navy (New Brand Color)
+                            950: '#050a19',
                         },
                         accent: {
                             400: '#fbbf24',
-                            500: '#f59e0b', // Logo Gold/Amber
-                            600: '#ea580c', // Logo Orange
+                            500: '#F58220', // Vibrant Orange (New Brand Color)
+                            600: '#ea580c',
                         },
                         slate: {
                             850: '#151e2e',
@@ -317,8 +317,8 @@
                         class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/10 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
                         <img src="/logo-new.png" alt="Propel Labs" class="w-full h-full object-contain p-1">
                     </div>
-                    <span class="text-xl font-bold text-slate-900 tracking-tight">Propel<span
-                            class="text-brand-600">Labs</span></span>
+                    <span class="text-xl font-bold text-brand-900 tracking-tight">Propel<span
+                            class="text-accent-500">Labs</span></span>
                 </a>
 
                 <!-- Desktop Menu -->
@@ -866,9 +866,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 md:py-12 border-t-4 border-indigo-500 relative overflow-hidden"
+    <footer class="bg-slate-900 text-slate-400 py-8 md:py-12 border-t-4 border-brand-900 relative overflow-hidden"
         id="footer">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-900 via-brand-600 to-accent-500"></div>
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
                 <div class="col-span-1 md:col-span-1">
@@ -877,7 +877,8 @@
                             class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-slate-900 shadow-lg overflow-hidden p-1">
                             <img src="/logo-new.png" alt="" class="object-contain">
                         </div>
-                        <span class="text-xl font-bold">Propel<span class="text-brand-500">Labs</span></span>
+                        <span class="text-xl font-bold text-brand-900">Propel<span
+                                class="text-accent-500">Labs</span></span>
                     </a>
                     <p class="text-sm">Innovations for real estate. Streamlining customer relationships and partner
                         success.</p>
@@ -938,132 +939,132 @@
 
     <!-- Scripts -->
     <script>
-  // Initialize Lucide Icons
-  lucide.createIcons();
+        // Initialize Lucide Icons
+        lucide.createIcons();
 
-  // Navbar Scroll Effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      navbar.classList.add('shadow-sm');
-    } else {
-      navbar.classList.remove('shadow-sm');
-    }
-  });
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
 
-  // Mobile Menu Toggle
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('translate-x-full');
-  });
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('translate-x-full');
+        });
 
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
-    });
-  });
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+        });
 
-  // --- DEMO SLIDER LOGIC ---
-  function switchTab(index) {
-    const track = document.getElementById('slider-track');
-    const btnPartner = document.getElementById('btn-partner');
-    const btnCustomer = document.getElementById('btn-customer');
+        // --- DEMO SLIDER LOGIC ---
+        function switchTab(index) {
+            const track = document.getElementById('slider-track');
+            const btnPartner = document.getElementById('btn-partner');
+            const btnCustomer = document.getElementById('btn-customer');
 
-    track.style.transform = `translateX(-${index * 100}%)`;
+            track.style.transform = `translateX(-${index * 100}%)`;
 
-    if (index === 0) {
-      btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold bg-white text-slate-900 shadow-sm";
-      btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600";
-    } else {
-      btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600";
-      btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold bg-white text-slate-900 shadow-sm";
-    }
-  }
-
-  // --- CONFIG ---
-  const GOOGLE_SCRIPT_URL =
-    'https://script.google.com/macros/s/AKfycbyVQrlBS3dqz9qi1rUh8dEJjzApva8dyJ8fIVzyd04-tlKCQForxFCNN_CVn30p4hjS/exec';
-
-  // --- GOOGLE SHEET SEND (BULLETPROOF) ---
-  function sendToGoogleSheet(form, source) {
-    const fd = new FormData();
-
-    const getVal = (selector) =>
-      form.querySelector(selector)?.value?.trim() || 'N/A';
-
-    fd.append('name', getVal('input[type="text"]'));
-    fd.append('email', getVal('input[type="email"]'));
-    fd.append('mobile', getVal('input[type="tel"], input[type="number"]'));
-    fd.append('company', getVal('input[name="company"]'));
-    fd.append('source', source);
-
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      body: fd
-    })
-      .then(res => res.json())
-      .then(data => console.log('Sheet OK:', data))
-      .catch(err => console.error('Sheet Error:', err));
-  }
-
-  // --- GATE + SUBMIT (FIXED) ---
-  function setupGate(formId, gateId, frameId, placeholderId, sourceName) {
-    const form = document.getElementById(formId);
-    const gate = document.getElementById(gateId);
-    const frame = document.getElementById(frameId);
-    const placeholder = document.getElementById(placeholderId);
-
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // ✅ SEND DATA FIRST
-      sendToGoogleSheet(form, sourceName);
-
-      const submitBtn = form.querySelector('button');
-      submitBtn.innerHTML = 'Unlocking...';
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        gate.classList.add('demo-hidden');
-
-        if (frame.getAttribute('data-src')) {
-          frame.src = frame.getAttribute('data-src');
+            if (index === 0) {
+                btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold bg-white text-slate-900 shadow-sm";
+                btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600";
+            } else {
+                btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600";
+                btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold bg-white text-slate-900 shadow-sm";
+            }
         }
 
-        frame.classList.remove('opacity-0', 'pointer-events-none');
+        // --- CONFIG ---
+        const GOOGLE_SCRIPT_URL =
+            'https://script.google.com/macros/s/AKfycbyVQrlBS3dqz9qi1rUh8dEJjzApva8dyJ8fIVzyd04-tlKCQForxFCNN_CVn30p4hjS/exec';
 
-        if (placeholder) {
-          setTimeout(() => (placeholder.style.display = 'none'), 500);
+        // --- GOOGLE SHEET SEND (BULLETPROOF) ---
+        function sendToGoogleSheet(form, source) {
+            const fd = new FormData();
+
+            const getVal = (selector) =>
+                form.querySelector(selector)?.value?.trim() || 'N/A';
+
+            fd.append('name', getVal('input[type="text"]'));
+            fd.append('email', getVal('input[type="email"]'));
+            fd.append('mobile', getVal('input[type="tel"], input[type="number"]'));
+            fd.append('company', getVal('input[name="company"]'));
+            fd.append('source', source);
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: fd
+            })
+                .then(res => res.json())
+                .then(data => console.log('Sheet OK:', data))
+                .catch(err => console.error('Sheet Error:', err));
         }
-      }, 800);
-    });
-  }
 
-  // INIT
-  setupGate('form-partner', 'gate-partner', 'frame-partner', 'placeholder-partner', 'Partner App');
-  setupGate('form-customer', 'gate-customer', 'frame-customer', 'placeholder-customer', 'Customer App');
+        // --- GATE + SUBMIT (FIXED) ---
+        function setupGate(formId, gateId, frameId, placeholderId, sourceName) {
+            const form = document.getElementById(formId);
+            const gate = document.getElementById(gateId);
+            const frame = document.getElementById(frameId);
+            const placeholder = document.getElementById(placeholderId);
 
-  // --- FEATURES TAB ---
-  function switchFeatureTab(index) {
-    const btnPartner = document.getElementById('ft-btn-partner');
-    const btnCustomer = document.getElementById('ft-btn-customer');
-    const gridPartner = document.getElementById('features-partner');
-    const gridCustomer = document.getElementById('features-customer');
+            if (!form) return;
 
-    if (index === 0) {
-      gridPartner.classList.remove('hidden');
-      gridCustomer.classList.add('hidden');
-    } else {
-      gridPartner.classList.add('hidden');
-      gridCustomer.classList.remove('hidden');
-    }
-  }
-</script>
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // ✅ SEND DATA FIRST
+                sendToGoogleSheet(form, sourceName);
+
+                const submitBtn = form.querySelector('button');
+                submitBtn.innerHTML = 'Unlocking...';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    gate.classList.add('demo-hidden');
+
+                    if (frame.getAttribute('data-src')) {
+                        frame.src = frame.getAttribute('data-src');
+                    }
+
+                    frame.classList.remove('opacity-0', 'pointer-events-none');
+
+                    if (placeholder) {
+                        setTimeout(() => (placeholder.style.display = 'none'), 500);
+                    }
+                }, 800);
+            });
+        }
+
+        // INIT
+        setupGate('form-partner', 'gate-partner', 'frame-partner', 'placeholder-partner', 'Partner App');
+        setupGate('form-customer', 'gate-customer', 'frame-customer', 'placeholder-customer', 'Customer App');
+
+        // --- FEATURES TAB ---
+        function switchFeatureTab(index) {
+            const btnPartner = document.getElementById('ft-btn-partner');
+            const btnCustomer = document.getElementById('ft-btn-customer');
+            const gridPartner = document.getElementById('features-partner');
+            const gridCustomer = document.getElementById('features-customer');
+
+            if (index === 0) {
+                gridPartner.classList.remove('hidden');
+                gridCustomer.classList.add('hidden');
+            } else {
+                gridPartner.classList.add('hidden');
+                gridCustomer.classList.remove('hidden');
+            }
+        }
+    </script>
 
     <!-- Contact Modal -->
     <div id="contact-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
