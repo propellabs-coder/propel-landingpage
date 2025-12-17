@@ -938,167 +938,133 @@
 
     <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+  // Initialize Lucide Icons
+  lucide.createIcons();
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                navbar.classList.add('shadow-sm');
-            } else {
-                navbar.classList.remove('shadow-sm');
-            }
-        });
+  // Navbar Scroll Effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('shadow-sm');
+    } else {
+      navbar.classList.remove('shadow-sm');
+    }
+  });
 
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        menuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('translate-x-full');
-            if (isHidden) {
-                mobileMenu.classList.remove('translate-x-full');
-            } else {
-                mobileMenu.classList.add('translate-x-full');
-            }
-        });
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('translate-x-full');
+  });
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('translate-x-full');
-            });
-        });
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+  });
 
-        // --- DEMO SLIDER LOGIC ---
-        function switchTab(index) {
-            const track = document.getElementById('slider-track');
-            const btnPartner = document.getElementById('btn-partner');
-            const btnCustomer = document.getElementById('btn-customer');
+  // --- DEMO SLIDER LOGIC ---
+  function switchTab(index) {
+    const track = document.getElementById('slider-track');
+    const btnPartner = document.getElementById('btn-partner');
+    const btnCustomer = document.getElementById('btn-customer');
 
-            // Move Track
-            track.style.transform = `translateX(-${index * 100}%)`;
+    track.style.transform = `translateX(-${index * 100}%)`;
 
-            // Update Buttons Style
-            if (index === 0) {
-                // Partner Active
-                btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-slate-900 ring-1 ring-black/5";
-                btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
-            } else {
-                // Customer Active
-                btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
-                btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-slate-900 ring-1 ring-black/5";
-            }
-        }
+    if (index === 0) {
+      btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold bg-white text-slate-900 shadow-sm";
+      btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600";
+    } else {
+      btnPartner.className = "px-6 py-2 rounded-full text-sm font-bold text-slate-600";
+      btnCustomer.className = "px-6 py-2 rounded-full text-sm font-bold bg-white text-slate-900 shadow-sm";
+    }
+  }
 
-        // --- CONFIGURATION ---
-        // TODO: PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyVQrlBS3dqz9qi1rUh8dEJjzApva8dyJ8fIVzyd04-tlKCQForxFCNN_CVn30p4hjS/exec'; 
+  // --- CONFIG ---
+  const GOOGLE_SCRIPT_URL =
+    'https://script.google.com/macros/s/AKfycbyVQrlBS3dqz9qi1rUh8dEJjzApva8dyJ8fIVzyd04-tlKCQForxFCNN_CVn30p4hjS/exec';
 
-        // --- GOOGLE SHEET SUBMISSION LOGIC ---
-  function sendToGoogleSheet(form, sourceName) {
-    const formData = new FormData(form);
+  // --- GOOGLE SHEET SEND (BULLETPROOF) ---
+  function sendToGoogleSheet(form, source) {
+    const fd = new FormData();
 
-    // Add source field (Partner / Customer / etc.)
-    formData.append('source', sourceName);
+    const getVal = (selector) =>
+      form.querySelector(selector)?.value?.trim() || 'N/A';
+
+    fd.append('name', getVal('input[type="text"]'));
+    fd.append('email', getVal('input[type="email"]'));
+    fd.append('mobile', getVal('input[type="tel"], input[type="number"]'));
+    fd.append('company', getVal('input[name="company"]'));
+    fd.append('source', source);
 
     fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
-      body: formData
+      body: fd
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log('Sheet response:', data);
-    })
-    .catch(err => {
-      console.error('Google Sheet Error:', err);
-    });
+      .then(res => res.json())
+      .then(data => console.log('Sheet OK:', data))
+      .catch(err => console.error('Sheet Error:', err));
   }
 
-  // Partner Form
-  const partnerForm = document.getElementById('form-partner');
-  if (partnerForm) {
-    partnerForm.addEventListener('submit', function () {
-      sendToGoogleSheet(partnerForm, 'Partner');
-    });
-  }
+  // --- GATE + SUBMIT (FIXED) ---
+  function setupGate(formId, gateId, frameId, placeholderId, sourceName) {
+    const form = document.getElementById(formId);
+    const gate = document.getElementById(gateId);
+    const frame = document.getElementById(frameId);
+    const placeholder = document.getElementById(placeholderId);
 
-  // Customer Form
-  const customerForm = document.getElementById('form-customer');
-  if (customerForm) {
-    customerForm.addEventListener('submit', function () {
-      sendToGoogleSheet(customerForm, 'Customer');
-    });
-  }
-        
-        // --- GATE UNLOCK LOGIC (Generic) ---
-        function setupGate(formId, gateId, frameId, placeholderId) {
-            const form = document.getElementById(formId);
-            const gate = document.getElementById(gateId);
-            const frame = document.getElementById(frameId);
-            const placeholder = document.getElementById(placeholderId);
+    if (!form) return;
 
-            if (!form) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
+      // ✅ SEND DATA FIRST
+      sendToGoogleSheet(form, sourceName);
 
-                const submitBtn = form.querySelector('button');
+      const submitBtn = form.querySelector('button');
+      submitBtn.innerHTML = 'Unlocking...';
+      submitBtn.disabled = true;
 
-                submitBtn.innerHTML = 'Unlocking...';
-                submitBtn.disabled = true;
+      setTimeout(() => {
+        gate.classList.add('demo-hidden');
 
-                setTimeout(() => {
-                    // Hide Gate
-                    gate.classList.add('demo-hidden');
-
-                    // Load Iframe
-                    if (frame.getAttribute('data-src')) {
-                        frame.src = frame.getAttribute('data-src');
-                    }
-                    frame.classList.remove('opacity-0', 'pointer-events-none');
-
-                    // Hide placeholder
-                    setTimeout(() => {
-                        if (placeholder) placeholder.style.display = 'none';
-                    }, 500);
-
-                }, 800);
-            });
+        if (frame.getAttribute('data-src')) {
+          frame.src = frame.getAttribute('data-src');
         }
 
-        // Initialize both gates
-        setupGate('form-partner', 'gate-partner', 'frame-partner', 'placeholder-partner');
-        setupGate('form-customer', 'gate-customer', 'frame-customer', 'placeholder-customer');
+        frame.classList.remove('opacity-0', 'pointer-events-none');
 
-        // --- FEATURES TAB LOGIC ---
-        function switchFeatureTab(index) {
-            const btnPartner = document.getElementById('ft-btn-partner');
-            const btnCustomer = document.getElementById('ft-btn-customer');
-            const gridPartner = document.getElementById('features-partner');
-            const gridCustomer = document.getElementById('features-customer');
-
-            if (index === 0) {
-                // Show Partner
-                gridPartner.classList.remove('hidden');
-                gridCustomer.classList.add('hidden');
-
-                // Style Buttons
-                btnPartner.className = "px-8 py-3 rounded-full text-sm font-bold transition-all shadow-md bg-white text-brand-600 ring-1 ring-black/5";
-                btnCustomer.className = "px-8 py-3 rounded-full text-sm font-bold text-slate-500 hover:text-slate-900 transition-all";
-            } else {
-                // Show Customer
-                gridPartner.classList.add('hidden');
-                gridCustomer.classList.remove('hidden');
-
-                // Style Buttons
-                btnPartner.className = "px-8 py-3 rounded-full text-sm font-bold text-slate-500 hover:text-slate-900 transition-all";
-                btnCustomer.className = "px-8 py-3 rounded-full text-sm font-bold transition-all shadow-md bg-white text-brand-600 ring-1 ring-black/5";
-            }
+        if (placeholder) {
+          setTimeout(() => (placeholder.style.display = 'none'), 500);
         }
+      }, 800);
+    });
+  }
 
-    </script>
+  // INIT
+  setupGate('form-partner', 'gate-partner', 'frame-partner', 'placeholder-partner', 'Partner App');
+  setupGate('form-customer', 'gate-customer', 'frame-customer', 'placeholder-customer', 'Customer App');
+
+  // --- FEATURES TAB ---
+  function switchFeatureTab(index) {
+    const btnPartner = document.getElementById('ft-btn-partner');
+    const btnCustomer = document.getElementById('ft-btn-customer');
+    const gridPartner = document.getElementById('features-partner');
+    const gridCustomer = document.getElementById('features-customer');
+
+    if (index === 0) {
+      gridPartner.classList.remove('hidden');
+      gridCustomer.classList.add('hidden');
+    } else {
+      gridPartner.classList.add('hidden');
+      gridCustomer.classList.remove('hidden');
+    }
+  }
+</script>
+
     <!-- Contact Modal -->
     <div id="contact-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
         aria-modal="true">
